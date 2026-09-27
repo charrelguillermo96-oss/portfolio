@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Charrel Guillermo | Student Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* =========================
+       BASIC SETTINGS
+    ========================= */
+
+    :root {
+      --pink: #ff4f9a;
+      --pink-dark: #d9367d;
+      --pink-light: #ffe3ef;
+      --pink-soft: #fff7fa;
+
+      --black: #171219;
+      --gray: #716970;
+      --white: #ffffff;
+
+      --border: rgba(23, 18, 25, 0.09);
+
+      --shadow:
+        0 20px 60px rgba(255, 79, 154, 0.18);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--black);
+      background: white;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      z-index: 1000;
+
+      padding: 18px 6%;
+
+      background: rgba(255,255,255,0.85);
+
+      backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+
+      margin: auto;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+
+      font-weight: 700;
+
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--pink);
+    }
+
+    .nav-links {
+      display: flex;
+
+      gap: 30px;
+
+      list-style: none;
+
+      font-size: 0.95rem;
+
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--pink);
+    }
+
+    .nav-button {
+      background: var(--black);
+
+      color: white;
+
+      padding: 10px 20px;
+
+      border-radius: 50px;
+
+      font-size: 0.9rem;
+
+      transition: 0.3s;
+    }
+
+    .nav-button:hover {
+      background: var(--pink);
+
+      transform: translateY(-2px);
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+
+      padding: 150px 6% 80px;
+
+      display: flex;
+
+      align-items: center;
+
+      background:
+
+        radial-gradient(
+          circle at 85% 20%,
+          #ffd1e5 0,
+          transparent 28%
+        ),
+
+        radial-gradient(
+          circle at 5% 85%,
+          #ffeaf3 0,
+          transparent 25%
+        ),
+
+        white;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+
+      width: 100%;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: 1.1fr 0.9fr;
+
+      gap: 70px;
+
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 8px 15px;
+
+      border-radius: 50px;
+
+      background: var(--pink-light);
+
+      color: var(--pink-dark);
+
+      font-size: 0.8rem;
+
+      font-weight: 700;
+
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 8px;
+
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--pink);
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+
+      line-height: 0.98;
+
+      letter-spacing: -4px;
+    }
+
+    .hero h1 span {
+      color: var(--pink);
+
+      font-style: italic;
+    }
+
+    .hero-text {
+      max-width: 600px;
+
+      margin: 28px 0;
+
+      color: var(--gray);
+
+      font-size: 1.05rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+
+      gap: 14px;
+
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 24px;
+
+      border-radius: 50px;
+
+      font-weight: 700;
+
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--pink);
+
+      color: white;
+
+      box-shadow:
+        0 12px 30px rgba(255,79,154,0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--pink-dark);
+
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      background: white;
+
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      color: var(--pink);
+
+      border-color: var(--pink);
+
+      transform: translateY(-3px);
+    }
+
+
+    /* =========================
+       PROFILE CARD
+    ========================= */
+
+    .profile-wrapper {
+      position: relative;
+
+      max-width: 430px;
+
+      margin: auto;
+    }
+
+    .profile-card {
+      min-height: 500px;
+
+      border-radius: 35px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #ff9fc7,
+          #ff4f9a
+        );
+
+      box-shadow: var(--shadow);
+
+      display: flex;
+
+      align-items: flex-end;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+
+    /* =========================
+       PROFILE IMAGE
+    ========================= */
+
+    .profile-image {
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      z-index: 1;
+    }
+
+
+    /* =========================
+       IMAGE DARK OVERLAY
+    ========================= */
+
+    .profile-card::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      width: auto;
+      height: auto;
+
+      border-radius: 0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.72),
+          rgba(0, 0, 0, 0.15) 55%,
+          rgba(0, 0, 0, 0.05)
+        );
+
+      z-index: 2;
+    }
+
+
+    /* =========================
+       DECORATIVE STAR
+    ========================= */
+
+    .profile-card::after {
+      content: "✦";
+
+      position: absolute;
+
+      color: white;
+
+      font-size: 9rem;
+
+      opacity: 0.12;
+
+      top: 20px;
+
+      left: 25px;
+
+      z-index: 2;
+
+      pointer-events: none;
+    }
+
+
+    /* =========================
+       PROFILE INFORMATION
+    ========================= */
+
+    .profile-info {
+      position: relative;
+
+      z-index: 3;
+
+      color: white;
+
+      padding: 35px;
+
+      text-shadow:
+        0 2px 8px rgba(0,0,0,0.45);
+    }
+
+    .profile-info h2 {
+      font-family: "Playfair Display", serif;
+
+      font-size: 3rem;
+
+      line-height: 1;
+    }
+
+    .profile-info p {
+      margin-top: 10px;
+
+      opacity: 0.95;
+
+      font-weight: 500;
+    }
+
+
+    /* =========================
+       FLOATING CARD
+    ========================= */
+
+    .floating-card {
+      position: absolute;
+
+      right: -25px;
+
+      top: 55px;
+
+      background: rgba(255,255,255,0.92);
+
+      padding: 14px 18px;
+
+      border-radius: 16px;
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,0.12);
+
+      font-size: 0.85rem;
+
+      font-weight: 700;
+
+      z-index: 5;
+    }
+
+
+    /* =========================
+       GENERAL SECTIONS
+    ========================= */
+
+    section {
+      padding: 110px 6%;
+    }
+
+    .container {
+      max-width: 1200px;
+
+      margin: auto;
+    }
+
+    .section-label {
+      color: var(--pink);
+
+      text-transform: uppercase;
+
+      letter-spacing: 2px;
+
+      font-size: 0.75rem;
+
+      font-weight: 700;
+
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(2.4rem, 5vw, 4rem);
+
+      line-height: 1.1;
+
+      letter-spacing: -2px;
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      background: var(--pink-soft);
+    }
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns: 0.7fr 1.3fr;
+
+      gap: 80px;
+
+      align-items: center;
+    }
+
+    .about-number {
+      font-family: "Playfair Display", serif;
+
+      font-size: 10rem;
+
+      color: var(--pink);
+
+      opacity: 0.17;
+
+      line-height: 0.8;
+    }
+
+    .about-content p {
+      color: var(--gray);
+
+      max-width: 680px;
+
+      margin: 25px 0;
+    }
+
+    .info-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 15px;
+
+      margin-top: 30px;
+    }
+
+    .info-card {
+      background: white;
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+
+      padding: 20px;
+
+      transition: 0.3s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+
+      box-shadow: var(--shadow);
+    }
+
+    .info-card small {
+      display: block;
+
+      color: var(--gray);
+
+      margin-bottom: 5px;
+    }
+
+    .info-card strong {
+      color: var(--pink-dark);
+    }
+
+
+    /* =========================
+       EDUCATION
+    ========================= */
+
+    .education-card {
+      margin-top: 50px;
+
+      padding: 35px;
+
+      border-radius: 25px;
+
+      border: 1px solid var(--border);
+
+      background:
+        linear-gradient(
+          135deg,
+          white,
+          #fff0f7
+        );
+
+      box-shadow: var(--shadow);
+
+      display: grid;
+
+      grid-template-columns: 85px 1fr;
+
+      gap: 25px;
+
+      align-items: center;
+    }
+
+    .school-icon {
+      width: 75px;
+
+      height: 75px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 22px;
+
+      background: var(--pink-light);
+
+      font-size: 2rem;
+    }
+
+    .education-card h3 {
+      font-size: 1.4rem;
+    }
+
+    .education-card p {
+      color: var(--gray);
+
+      margin-top: 5px;
+    }
+
+    .tag {
+      display: inline-block;
+
+      margin-top: 12px;
+
+      padding: 5px 12px;
+
+      border-radius: 50px;
+
+      background: var(--pink-light);
+
+      color: var(--pink-dark);
+
+      font-size: 0.8rem;
+
+      font-weight: 700;
+    }
+
+
+    /* =========================
+       AUXILIARY TECHNOLOGY
+    ========================= */
+
+    .technology {
+      background: #faf8f9;
+    }
+
+    .technology-box {
+      margin-top: 50px;
+
+      padding: 50px;
+
+      border-radius: 30px;
+
+      background: var(--black);
+
+      color: white;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 50px;
+
+      align-items: center;
+    }
+
+    .technology-box h3 {
+      font-family: "Playfair Display", serif;
+
+      font-size: 2.5rem;
+
+      line-height: 1.1;
+    }
+
+    .technology-box p {
+      color: #aaa1a8;
+
+      margin-top: 20px;
+    }
+
+    .technology-list {
+      display: grid;
+
+      gap: 15px;
+    }
+
+    .technology-item {
+      padding: 18px;
+
+      border-radius: 16px;
+
+      background: rgba(255,255,255,0.06);
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      display: flex;
+
+      gap: 14px;
+
+      align-items: center;
+    }
+
+    .technology-item .icon {
+      color: #ff8cbd;
+
+      font-size: 1.4rem;
+    }
+
+    .technology-item small {
+      color: #aaa1a8;
+    }
+
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .skills-grid {
+      margin-top: 50px;
+
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 18px;
+    }
+
+    .skill-card {
+      padding: 28px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 22px;
+
+      transition: 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-7px);
+
+      border-color: #ffc0d9;
+
+      box-shadow: var(--shadow);
+    }
+
+    .skill-icon {
+      width: 50px;
+
+      height: 50px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 15px;
+
+      background: var(--pink-light);
+
+      color: var(--pink);
+
+      font-size: 1.4rem;
+
+      margin-bottom: 18px;
+    }
+
+    .skill-card p {
+      color: var(--gray);
+
+      font-size: 0.9rem;
+
+      margin-top: 7px;
+    }
+
+
+    /* =========================
+       GOALS
+    ========================= */
+
+    .goals {
+      background: var(--pink-soft);
+    }
+
+    .goals-grid {
+      margin-top: 50px;
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .goal-card {
+      background: white;
+
+      padding: 30px;
+
+      border-radius: 24px;
+
+      border: 1px solid var(--border);
+
+      transition: 0.3s;
+    }
+
+    .goal-card:hover {
+      transform: translateY(-7px);
+
+      box-shadow: var(--shadow);
+    }
+
+    .goal-number {
+      color: var(--pink);
+
+      font-weight: 700;
+    }
+
+    .goal-card h3 {
+      margin: 15px 0 8px;
+    }
+
+    .goal-card p {
+      color: var(--gray);
+
+      font-size: 0.9rem;
+    }
+
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact {
+      background: var(--black);
+
+      color: white;
+
+      text-align: center;
+    }
+
+    .contact .section-label {
+      color: #ff8cbd;
+    }
+
+    .contact .section-title {
+      max-width: 800px;
+
+      margin: auto;
+    }
+
+    .contact-text {
+      max-width: 600px;
+
+      color: #aaa1a8;
+
+      margin: 20px auto 35px;
+    }
+
+    .contact-email {
+      color: #ff8cbd;
+
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(1.5rem, 4vw, 2.8rem);
+
+      border-bottom: 2px solid #ff8cbd;
+
+      transition: 0.3s;
+    }
+
+    .contact-email:hover {
+      color: white;
+
+      border-color: white;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: var(--black);
+
+      color: #777;
+
+      border-top: 1px solid #292329;
+
+      padding: 25px 6%;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+
+      margin: auto;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      font-size: 0.85rem;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-container,
+      .about-grid,
+      .technology-box {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .goals-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 550px) {
+
+      section {
+        padding: 80px 5%;
+      }
+
+      .nav-button {
+        display: none;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .profile-card {
+        min-height: 400px;
+      }
+
+      .profile-info {
+        padding: 25px;
+      }
+
+      .profile-info h2 {
+        font-size: 2.5rem;
+      }
+
+      .floating-card {
+        right: 5px;
+      }
+
+      .skills-grid,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .education-card {
+        grid-template-columns: 1fr;
+      }
+
+      .technology-box {
+        padding: 30px;
+      }
+
+      .footer-container {
+        flex-direction: column;
+
+        gap: 8px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
+
+  <nav>
+
+    <div class="nav-container">
+
+      <a href="#" class="logo">
+        Charrel<span>.</span>
+      </a>
+
+      <ul class="nav-links">
+
+        <li>
+          <a href="#about">About</a>
+        </li>
+
+        <li>
+          <a href="#education">Education</a>
+        </li>
+
+        <li>
+          <a href="#technology">Technology</a>
+        </li>
+
+        <li>
+          <a href="#skills">Skills</a>
+        </li>
+
+        <li>
+          <a href="#goals">Goals</a>
+        </li>
+
+      </ul>
+
+      <a href="#contact" class="nav-button">
+        Contact
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <header class="hero">
+
+    <div class="hero-container">
+
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          Grade 11 HUMSS Student
+        </div>
+
+        <h1>
+          Hi, I'm
+          <span>Charrel.</span>
+        </h1>
+
+        <p class="hero-text">
+
+          I'm a 16-year-old student from
+          Tamboli, Allacapan, Cagayan.
+          I am currently studying at Pacac
+          Integrated School under the HUMSS strand
+          while exploring technology and new skills.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+          <a href="#about" class="btn btn-primary">
+            Explore My Portfolio →
+          </a>
+
+          <a href="#education" class="btn btn-outline">
+            My Education
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           PROFILE WITH IMAGE
+      ========================= -->
+
+      <div class="profile-wrapper">
+
+        <div class="profile-card">
+
+          <!-- CHANGE THIS IMAGE PATH -->
+          <img
+            src="cha.jpg"
+            alt="Charrel Guillermo"
+            class="profile-image"
+          >
+
+          <div class="profile-info">
+
+            <h2>
+              Charrel<br>
+              Guillermo
+            </h2>
+
+            <p>
+              Student · HUMSS · Technology Learner
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="floating-card">
+          ✦ Learning & Growing
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       ABOUT
+  ========================= -->
+
+  <section class="about" id="about">
+
+    <div class="container about-grid">
+
+
+      <div>
+
+        <div class="about-number">
+          01
+        </div>
+
+      </div>
+
+
+      <div class="about-content">
+
+        <div class="section-label">
+          About Me
+        </div>
+
+        <h2 class="section-title">
+          A student who is always learning.
+        </h2>
+
+
+        <p>
+
+          My name is
+          <strong>Charrel Guillermo</strong>.
+
+          I am 16 years old and from
+          Tamboli, Allacapan, Cagayan.
+
+          I am currently a Grade 11 student
+          at Pacac Integrated School taking
+          the HUMSS strand.
+
+        </p>
+
+
+        <p>
+
+          I enjoy learning new things,
+          improving my skills, and exploring
+          technology. My experiences as a
+          student continue to help me discover
+          my interests and goals for the future.
+
+        </p>
+
+
+        <div class="info-grid">
+
+
+          <div class="info-card">
+
+            <small>Name</small>
+
+            <strong>
+              Charrel Guillermo
+            </strong>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <small>Age</small>
+
+            <strong>
+              16 Years Old
+            </strong>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <small>Location</small>
+
+            <strong>
+              Tamboli, Allacapan, Cagayan
+            </strong>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <small>Grade & Strand</small>
+
+            <strong>
+              Grade 11 — HUMSS
+            </strong>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       EDUCATION
+  ========================= -->
+
+  <section id="education">
+
+    <div class="container">
+
+      <div class="section-label">
+        Education
+      </div>
+
+      <h2 class="section-title">
+        My academic journey.
+      </h2>
+
+
+      <div class="education-card">
+
+
+        <div class="school-icon">
+          🎓
+        </div>
+
+
+        <div>
+
+          <h3>
+            Pacac Integrated School
+          </h3>
+
+          <p>
+            Grade 11 — HUMSS Strand
+          </p>
+
+          <p>
+
+            Currently developing my academic,
+            communication, research, creative,
+            and critical-thinking skills through
+            the HUMSS strand.
+
+          </p>
+
+          <span class="tag">
+            Current Student
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       AUXILIARY TECHNOLOGY
+  ========================= -->
+
+  <section class="technology" id="technology">
+
+    <div class="container">
+
+
+      <div class="section-label">
+        Technology Experience
+      </div>
+
+      <h2 class="section-title">
+        My Auxiliary Technology journey.
+      </h2>
+
+
+      <div class="technology-box">
+
+
+        <div>
+
+          <h3>
+            Exploring technology and
+            developing new skills.
+          </h3>
+
+
+          <p>
+
+            On June 21, I joined an
+            Auxiliary Technology Program
+            in Aparri, Cagayan.
+
+            This experience gave me an
+            opportunity to learn more about
+            technology and develop practical
+            skills that can be useful for
+            my future.
+
+          </p>
+
+        </div>
+
+
+        <div class="technology-list">
+
+
+          <div class="technology-item">
+
+            <div class="icon">
+              💻
+            </div>
+
+            <div>
+
+              <strong>
+                Auxiliary Technology Program
+              </strong>
+
+              <br>
+
+              <small>
+                Program Participant
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <div class="technology-item">
+
+            <div class="icon">
+              📍
+            </div>
+
+            <div>
+
+              <strong>
+                Aparri, Cagayan
+              </strong>
+
+              <br>
+
+              <small>
+                Program Location
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <div class="technology-item">
+
+            <div class="icon">
+              📅
+            </div>
+
+            <div>
+
+              <strong>
+                June 21
+              </strong>
+
+              <br>
+
+              <small>
+                Program Start
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <div class="technology-item">
+
+            <div class="icon">
+              ✦
+            </div>
+
+            <div>
+
+              <strong>
+                Learning Goal
+              </strong>
+
+              <br>
+
+              <small>
+                Develop technology skills
+              </small>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SKILLS
+  ========================= -->
+
+  <section id="skills">
+
+    <div class="container">
+
+
+      <div class="section-label">
+        Skills
+      </div>
+
+      <h2 class="section-title">
+        Skills I'm developing.
+      </h2>
+
+
+      <div class="skills-grid">
+
+
+        <div class="skill-card">
+
+          <div class="skill-icon">
+            💻
+          </div>
+
+          <h3>
+            Technology
+          </h3>
+
+          <p>
+
+            Learning about computers,
+            digital tools, and technology.
+
+          </p>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <div class="skill-icon">
+            💬
+          </div>
+
+          <h3>
+            Communication
+          </h3>
+
+          <p>
+
+            Developing communication,
+            speaking, and presentation skills.
+
+          </p>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <div class="skill-icon">
+            🎨
+          </div>
+
+          <h3>
+            Creativity
+          </h3>
+
+          <p>
+
+            Exploring creative ideas and
+            different ways to express myself.
+
+          </p>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <div class="skill-icon">
+            📚
+          </div>
+
+          <h3>
+            Research
+          </h3>
+
+          <p>
+
+            Developing research and
+            information-gathering skills.
+
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       GOALS
+  ========================= -->
+
+  <section class="goals" id="goals">
+
+    <div class="container">
+
+
+      <div class="section-label">
+        My Goals
+      </div>
+
+      <h2 class="section-title">
+        Building my future.
+      </h2>
+
+
+      <div class="goals-grid">
+
+
+        <div class="goal-card">
+
+          <div class="goal-number">
+            01
+          </div>
+
+          <h3>
+            Improve My Skills
+          </h3>
+
+          <p>
+
+            Continue learning technology,
+            communication, research,
+            and creative skills.
+
+          </p>
+
+        </div>
+
+
+        <div class="goal-card">
+
+          <div class="goal-number">
+            02
+          </div>
+
+          <h3>
+            Finish My Education
+          </h3>
+
+          <p>
+
+            Work hard in school and
+            successfully complete
+            senior high school.
+
+          </p>
+
+        </div>
+
+
+        <div class="goal-card">
+
+          <div class="goal-number">
+            03
+          </div>
+
+          <h3>
+            Prepare for My Future
+          </h3>
+
+          <p>
+
+            Use the knowledge and
+            experiences I gain today
+            to prepare for future
+            opportunities.
+
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================= -->
+
+  <section class="contact" id="contact">
+
+    <div class="container">
+
+
+      <div class="section-label">
+        Contact
+      </div>
+
+
+      <h2 class="section-title">
+        Thank you for visiting my portfolio.
+      </h2>
+
+
+      <p class="contact-text">
+
+        I'm a student who is always
+        learning, exploring new ideas,
+        and looking forward to new
+        opportunities.
+
+      </p>
+
+
+      <a
+        class="contact-email"
+        href="mailto:charrelguillermo96@gmail.com"
+      >
+        charrelguillermo96@gmail.com
+      </a>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="footer-container">
+
+      <div>
+        © 2026 Charrel Guillermo
+      </div>
+
+      <div>
+        Grade 11 HUMSS Student
+      </div>
+
+    </div>
+
+  </footer>
+
+
+</body>
+</html>
