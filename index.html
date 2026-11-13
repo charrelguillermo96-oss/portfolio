@@ -1,254 +1,978 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The student portfolio of Charrel Guillermo — a HUMSS student exploring technology, digital skills, and future opportunities.">
-  <meta name="theme-color" content="#0b1220">
-  <title>Charrel Guillermo | Professional Portfolio</title>
-  <style>
-    :root {
-      --bg: #0b1220; --panel: #111c2e; --panel2: #15243a;
-      --text: #edf4ff; --muted: #a9b8ce; --line: rgba(180,205,240,.15);
-      --accent: #66d9e8; --accent2: #9aabff; --max: 1120px;
-      --shadow: 0 20px 55px rgba(0,0,0,.22);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
-    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    .wrap { width: min(var(--max), 90%); margin: auto; }
-    .skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: #06111b; padding: 10px 14px; z-index: 99; }
-    .skip:focus { left: 8px; }
-    header { position: sticky; top: 0; z-index: 50; background: rgba(11,18,32,.88); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
-    .nav { min-height: 72px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
-    .brand { font-weight: 850; font-size: 1.25rem; letter-spacing: -.04em; }
-    .brand span { color: var(--accent); }
-    .links { display:flex; gap:24px; align-items:center; list-style:none; }
-    .links a { color: var(--muted); font-size:.91rem; transition:color .2s; }
-    .links a:hover, .links a:focus-visible { color:var(--accent); }
-    .nav-cta, .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius:999px; padding:11px 18px; font-weight:750; border:1px solid transparent; transition:transform .2s, background .2s; }
-    .nav-cta, .btn-primary { background:var(--accent); color:#07131d; }
-    .btn-outline { border-color:var(--line); color:var(--text); background:rgba(255,255,255,.025); }
-    .btn:hover { transform:translateY(-2px); }
-    .menu { display:none; border:1px solid var(--line); color:var(--text); background:var(--panel); border-radius:12px; padding:8px 12px; cursor:pointer; }
-    .hero { padding:92px 0 84px; overflow:hidden; position:relative; }
-    .hero:before { content:""; position:absolute; width:460px; height:460px; border-radius:50%; background:radial-gradient(circle,rgba(102,217,232,.13),transparent 68%); top:-170px; right:-130px; pointer-events:none; }
-    .hero-grid { display:grid; grid-template-columns:1.25fr .75fr; align-items:center; gap:64px; position:relative; }
-    .eyebrow, .kicker { color:var(--accent); text-transform:uppercase; letter-spacing:.16em; font-size:.76rem; font-weight:800; }
-    h1 { font-size:clamp(3rem,7vw,5.8rem); line-height:1.02; letter-spacing:-.065em; margin:18px 0 22px; }
-    h1 span { color:var(--accent); }
-    .lead { color:var(--muted); font-size:1.12rem; max-width:650px; }
-    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
-    .availability { display:flex; align-items:center; gap:9px; color:var(--muted); margin-top:27px; font-size:.9rem; }
-    .dot { width:9px; height:9px; border-radius:50%; background:#76dfae; box-shadow:0 0 0 5px rgba(118,223,174,.12); }
-    .portrait-wrap { position:relative; max-width:360px; margin:auto; }
-    .portrait { aspect-ratio:4/5; width:100%; object-fit:cover; border-radius:28px; border:1px solid var(--line); box-shadow:var(--shadow); background:var(--panel); }
-    .portrait-note { position:absolute; bottom:18px; left:-28px; background:var(--panel2); border:1px solid var(--line); border-radius:15px; padding:13px 17px; box-shadow:var(--shadow); font-size:.9rem; }
-    section { padding:82px 0; border-top:1px solid var(--line); }
-    .section-head { max-width:720px; margin-bottom:34px; }
-    .section-head h2 { font-size:clamp(2rem,4vw,3.25rem); letter-spacing:-.05em; line-height:1.12; margin:10px 0 14px; }
-    .section-head p, .muted { color:var(--muted); }
-    .about-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:30px; }
-    .card { background:linear-gradient(145deg,var(--panel),rgba(17,28,46,.72)); border:1px solid var(--line); border-radius:22px; padding:26px; }
-    .card p + p { margin-top:14px; }
-    .facts { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    .fact { padding:18px; border-radius:16px; background:var(--panel2); border:1px solid var(--line); }
-    .fact small { display:block; color:var(--muted); margin-bottom:5px; }
-    .fact strong { font-size:.98rem; }
-    .timeline { display:grid; gap:15px; }
-    .timeline-item { display:grid; grid-template-columns:54px 1fr; gap:16px; align-items:start; }
-    .timeline-icon { width:50px; height:50px; display:grid; place-items:center; border-radius:15px; color:var(--accent); background:rgba(102,217,232,.1); font-size:1.35rem; }
-    .timeline-item h3 { font-size:1.08rem; margin-bottom:3px; }
-    .tag { display:inline-block; border:1px solid rgba(102,217,232,.25); color:var(--accent); background:rgba(102,217,232,.07); padding:4px 10px; border-radius:99px; font-size:.78rem; margin-top:9px; }
-    .skill-grid, .project-grid, .goal-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-    .skill-card h3, .project-card h3, .goal-card h3 { margin:12px 0 6px; font-size:1.08rem; }
-    .icon { font-size:1.5rem; }
-    .skill-card p, .project-card p, .goal-card p { color:var(--muted); font-size:.94rem; }
-    .skill-status { color:var(--accent); font-size:.78rem; font-weight:750; margin-top:12px; display:block; }
-    .project-card { min-height:210px; display:flex; flex-direction:column; }
-    .project-card .project-foot { margin-top:auto; padding-top:18px; color:var(--accent); font-size:.85rem; font-weight:750; }
-    .notice { margin-top:18px; color:var(--muted); font-size:.88rem; border-left:3px solid var(--accent); padding:12px 16px; background:rgba(102,217,232,.05); border-radius:0 12px 12px 0; }
-    .roadmap { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-    .step { position:relative; }
-    .step-num { color:var(--accent); font-weight:850; font-size:.82rem; letter-spacing:.12em; }
-    .contact-box { display:grid; grid-template-columns:1fr auto; gap:25px; align-items:center; background:linear-gradient(120deg,#13243a,#152e42); border:1px solid var(--line); border-radius:26px; padding:34px; }
-    .contact-box h2 { font-size:clamp(1.8rem,4vw,2.7rem); line-height:1.15; letter-spacing:-.04em; margin:8px 0; }
-    .contact-box p { color:var(--muted); max-width:650px; }
-    .email-link { color:var(--accent); font-weight:750; overflow-wrap:anywhere; }
-    footer { padding:26px 0 34px; color:var(--muted); font-size:.86rem; }
-    .footer-inner { display:flex; justify-content:space-between; gap:15px; flex-wrap:wrap; }
-    :focus-visible { outline:3px solid var(--accent2); outline-offset:3px; }
-    @media(max-width:850px) {
-      .menu { display:block; }
-      .links { display:none; position:absolute; top:72px; left:0; right:0; padding:18px 5%; background:#0d1727; border-bottom:1px solid var(--line); flex-direction:column; align-items:flex-start; gap:16px; }
-      .links.open { display:flex; }
-      .nav-cta { display:none; }
-      .hero-grid, .about-grid { grid-template-columns:1fr; }
-      .hero-grid { gap:45px; }
-      .portrait-wrap { max-width:300px; }
-      .skill-grid, .project-grid, .goal-grid, .roadmap { grid-template-columns:repeat(2,1fr); }
-    }
-    @media(max-width:560px) {
-      .hero { padding:65px 0; }
-      section { padding:65px 0; }
-      .facts, .skill-grid, .project-grid, .goal-grid, .roadmap, .contact-box { grid-template-columns:1fr; }
-      .portrait-note { left:-8px; }
-      .contact-box { padding:25px; }
-      h1 { font-size:3.2rem; }
-    }
-    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Charrel Guillermo's Student Portfolio">
+<meta name="theme-color" content="#0b1220">
+<title>Charrel Guillermo | Professional Portfolio</title>
+
+<style>
+:root {
+  --bg:#0b1220;
+  --panel:#111c2e;
+  --panel2:#15243a;
+  --text:#edf4ff;
+  --muted:#a9b8ce;
+  --line:rgba(180,205,240,.15);
+  --accent:#66d9e8;
+  --accent2:#9aabff;
+  --max:1120px;
+  --shadow:0 20px 55px rgba(0,0,0,.22);
+}
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:85px;
+}
+
+body {
+  font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+}
+
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+button {
+  font:inherit;
+}
+
+.wrap {
+  width:min(var(--max),90%);
+  margin:auto;
+}
+
+header {
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(11,18,32,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav {
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand {
+  font-weight:850;
+  font-size:1.3rem;
+}
+
+.brand span,
+h1 span {
+  color:var(--accent);
+}
+
+.links {
+  display:flex;
+  gap:20px;
+  align-items:center;
+  list-style:none;
+}
+
+.links a {
+  color:var(--muted);
+  font-size:.88rem;
+  transition:.2s;
+}
+
+.links a:hover {
+  color:var(--accent);
+}
+
+.btn,
+.nav-cta {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  padding:11px 18px;
+  font-weight:750;
+  border:1px solid transparent;
+  transition:.2s;
+  cursor:pointer;
+}
+
+.btn:hover {
+  transform:translateY(-3px);
+}
+
+.btn-primary,
+.nav-cta {
+  background:var(--accent);
+  color:#07131d;
+}
+
+.btn-outline {
+  border-color:var(--line);
+  color:var(--text);
+  background:rgba(255,255,255,.025);
+}
+
+.menu {
+  display:none;
+  border:1px solid var(--line);
+  color:var(--text);
+  background:var(--panel);
+  border-radius:12px;
+  padding:8px 12px;
+  cursor:pointer;
+}
+
+.hero {
+  padding:90px 0;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-grid {
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  align-items:center;
+  gap:60px;
+}
+
+.eyebrow,
+.kicker {
+  color:var(--accent);
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  font-size:.76rem;
+  font-weight:800;
+}
+
+h1 {
+  font-size:clamp(3rem,7vw,5.8rem);
+  line-height:1.05;
+  letter-spacing:-.06em;
+  margin:18px 0;
+}
+
+.lead {
+  color:var(--muted);
+  font-size:1.1rem;
+  max-width:650px;
+}
+
+.hero-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
+}
+
+.availability {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--muted);
+  margin-top:25px;
+  font-size:.9rem;
+}
+
+.dot {
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#76dfae;
+}
+
+.portrait-wrap {
+  position:relative;
+  max-width:350px;
+  margin:auto;
+}
+
+.portrait {
+  aspect-ratio:4/5;
+  width:100%;
+  object-fit:cover;
+  border-radius:25px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  background:var(--panel);
+}
+
+.portrait-note {
+  position:absolute;
+  bottom:18px;
+  left:-20px;
+  background:var(--panel2);
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:12px 16px;
+  box-shadow:var(--shadow);
+}
+
+section {
+  padding:80px 0;
+  border-top:1px solid var(--line);
+}
+
+.section-head {
+  max-width:720px;
+  margin-bottom:32px;
+}
+
+.section-head h2 {
+  font-size:clamp(2rem,4vw,3.2rem);
+  letter-spacing:-.05em;
+  line-height:1.15;
+  margin:10px 0;
+}
+
+.section-head p,
+.muted {
+  color:var(--muted);
+}
+
+.card {
+  background:linear-gradient(145deg,var(--panel),rgba(17,28,46,.72));
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:25px;
+}
+
+.card p + p {
+  margin-top:14px;
+}
+
+.about-grid {
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:25px;
+}
+
+.facts {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.fact {
+  padding:18px;
+  border-radius:16px;
+  background:var(--panel2);
+  border:1px solid var(--line);
+}
+
+.fact small {
+  display:block;
+  color:var(--muted);
+}
+
+.fact strong {
+  font-size:.95rem;
+}
+
+.timeline {
+  display:grid;
+  gap:15px;
+}
+
+.timeline-item {
+  display:grid;
+  grid-template-columns:54px 1fr;
+  gap:16px;
+  align-items:start;
+}
+
+.timeline-icon {
+  width:50px;
+  height:50px;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  color:var(--accent);
+  background:rgba(102,217,232,.1);
+  font-size:1.35rem;
+}
+
+.timeline-item h3 {
+  font-size:1.08rem;
+  margin-bottom:4px;
+}
+
+.tag {
+  display:inline-block;
+  border:1px solid rgba(102,217,232,.25);
+  color:var(--accent);
+  background:rgba(102,217,232,.07);
+  padding:4px 10px;
+  border-radius:99px;
+  font-size:.78rem;
+  margin-top:9px;
+}
+
+.skill-grid,
+.project-grid,
+.goal-grid,
+.roadmap {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.skill-card h3,
+.project-card h3,
+.goal-card h3 {
+  margin:12px 0 6px;
+  font-size:1.08rem;
+}
+
+.icon {
+  font-size:1.5rem;
+}
+
+.skill-card p,
+.project-card p,
+.goal-card p {
+  color:var(--muted);
+  font-size:.94rem;
+}
+
+.skill-status {
+  color:var(--accent);
+  font-size:.78rem;
+  font-weight:750;
+  margin-top:12px;
+  display:block;
+}
+
+.project-card {
+  min-height:210px;
+  display:flex;
+  flex-direction:column;
+}
+
+.project-foot {
+  margin-top:auto;
+  padding-top:18px;
+  color:var(--accent);
+  font-size:.85rem;
+  font-weight:750;
+}
+
+.notice {
+  margin-top:18px;
+  color:var(--muted);
+  font-size:.88rem;
+  border-left:3px solid var(--accent);
+  padding:12px 16px;
+  background:rgba(102,217,232,.05);
+  border-radius:0 12px 12px 0;
+}
+
+.step-num {
+  color:var(--accent);
+  font-weight:850;
+  font-size:.82rem;
+  letter-spacing:.12em;
+}
+
+/* RESUME SECTION */
+
+.resume-card {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+  flex-wrap:wrap;
+  background:linear-gradient(120deg,#13243a,#152e42);
+}
+
+.resume-info {
+  flex:1;
+  min-width:220px;
+}
+
+.resume-info h3 {
+  font-size:1.5rem;
+  margin:8px 0;
+}
+
+.resume-info p {
+  color:var(--muted);
+}
+
+.resume-icon {
+  font-size:3rem;
+  margin-bottom:10px;
+}
+
+.resume-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.contact-box {
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:25px;
+  align-items:center;
+  background:linear-gradient(120deg,#13243a,#152e42);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:34px;
+}
+
+.contact-box h2 {
+  font-size:clamp(1.8rem,4vw,2.7rem);
+  line-height:1.15;
+  margin:8px 0;
+}
+
+.contact-box p {
+  color:var(--muted);
+  max-width:650px;
+}
+
+.email-link {
+  color:var(--accent);
+  font-weight:750;
+  overflow-wrap:anywhere;
+}
+
+footer {
+  padding:26px 0 34px;
+  color:var(--muted);
+  font-size:.86rem;
+}
+
+.footer-inner {
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+:focus-visible {
+  outline:3px solid var(--accent2);
+  outline-offset:3px;
+}
+
+@media(max-width:850px) {
+  .menu {
+    display:block;
+  }
+
+  .links {
+    display:none;
+    position:absolute;
+    top:72px;
+    left:0;
+    right:0;
+    padding:20px 5%;
+    background:#0d1727;
+    border-bottom:1px solid var(--line);
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+  }
+
+  .links.open {
+    display:flex;
+  }
+
+  .nav-cta {
+    display:none;
+  }
+
+  .hero-grid,
+  .about-grid {
+    grid-template-columns:1fr;
+  }
+
+  .hero-grid {
+    gap:45px;
+  }
+
+  .portrait-wrap {
+    max-width:300px;
+  }
+
+  .skill-grid,
+  .project-grid,
+  .roadmap {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:560px) {
+  .hero {
+    padding:65px 0;
+  }
+
+  section {
+    padding:65px 0;
+  }
+
+  .facts,
+  .skill-grid,
+  .project-grid,
+  .roadmap,
+  .contact-box {
+    grid-template-columns:1fr;
+  }
+
+  .portrait-note {
+    left:-8px;
+  }
+
+  .contact-box {
+    padding:25px;
+  }
+
+  h1 {
+    font-size:3.2rem;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition:none !important;
+  }
+}
+</style>
 </head>
+
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header>
-    <nav class="nav wrap" aria-label="Main navigation">
-      <a class="brand" href="#home">Charrel<span>.</span></a>
-      <button class="menu" id="menuButton" aria-expanded="false" aria-controls="navLinks">Menu ☰</button>
-      <ul class="links" id="navLinks">
-        <li><a href="#about">About</a></li><li><a href="#education">Education</a></li>
-        <li><a href="#training">Training</a></li><li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li><li><a href="#goals">Goals</a></li>
-      </ul>
-      <a class="nav-cta" href="#contact">Get in touch ↗</a>
-    </nav>
-  </header>
 
-  <main id="main">
-    <section class="hero" id="home" style="border:0">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">Student Portfolio · Philippines</div>
-          <h1>Learning today.<br><span>Building tomorrow.</span></h1>
-          <p class="lead">Hello, I'm <strong>Charrel Guillermo</strong> — a Grade 11 HUMSS student interested in technology, digital creativity, office and computer-related skills, and entrepreneurship.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">Explore my work ↓</a>
-            <a class="btn btn-outline" href="#about">About me</a>
-          </div>
-          <div class="availability"><span class="dot"></span> Student · Learning and developing new skills</div>
-        </div>
-        <div class="portrait-wrap">
-          <img class="portrait" src="cha.jpg" alt="Profile portrait of Charrel Guillermo">
-          <div class="portrait-note">✦ Curious mind. Continuous growth.</div>
-        </div>
-      </div>
-    </section>
+<a href="#main" class="skip">Skip to content</a>
 
-    <section id="about">
-      <div class="wrap">
-        <div class="section-head"><div class="kicker">01 / About me</div><h2>A little about my journey.</h2><p>My background, interests, and the direction I hope to grow in.</p></div>
-        <div class="about-grid">
-          <div class="card">
-            <p>My name is <strong>Charrel Guillermo</strong>. I am a Senior High School student taking the HUMSS strand at Pacac Integrated School in Cagayan, Philippines.</p>
-            <p>I enjoy discovering how technology works, learning digital tools, and finding creative ways to solve problems. I am still developing my abilities, and I believe that consistent practice and curiosity are important parts of growth.</p>
-            <p>My long-term goal is to become financially independent, build a meaningful career, and eventually create a business of my own.</p>
-          </div>
-          <div class="facts">
-            <div class="fact"><small>Current level</small><strong>Grade 11</strong></div>
-            <div class="fact"><small>Academic strand</small><strong>HUMSS</strong></div>
-            <div class="fact"><small>School</small><strong>Pacac Integrated School</strong></div>
-            <div class="fact"><small>Interests</small><strong>Technology & digital work</strong></div>
-          </div>
-        </div>
-      </div>
-    </section>
+<header>
+<nav class="nav wrap" aria-label="Main navigation">
 
-    <section id="education">
-      <div class="wrap">
-        <div class="section-head"><div class="kicker">02 / Education</div><h2>My academic foundation.</h2><p>Learning experiences that help me build communication, research, and critical-thinking skills.</p></div>
-        <div class="timeline">
-          <article class="card timeline-item">
-            <div class="timeline-icon">🎓</div><div><h3>Pacac Integrated School</h3><p class="muted">Senior High School · Grade 11 · HUMSS Strand</p><p class="muted">Developing skills in communication, research, writing, collaboration, creativity, and critical thinking.</p><span class="tag">Current education</span></div>
-          </article>
-          <article class="card timeline-item">
-            <div class="timeline-icon">📘</div><div><h3>Continuous learning</h3><p class="muted">I also use independent practice and school activities to explore computer tools, improve my English communication, and build practical knowledge.</p><span class="tag">Ongoing development</span></div>
-          </article>
-        </div>
-      </div>
-    </section>
+<a class="brand" href="#home">Charrel<span>.</span></a>
 
-    <section id="training">
-      <div class="wrap">
-        <div class="section-head"><div class="kicker">03 / Training & exposure</div><h2>Exploring technology.</h2><p>A learning experience that introduced me to computer-related topics and practical digital skills.</p></div>
-        <article class="card timeline-item">
-          <div class="timeline-icon">💻</div>
-          <div>
-            <h3>Auxiliary Technology Program (ATP)</h3>
-            <p class="muted">Program participant · Aparri, Cagayan · June 21 (year not specified)</p>
-            <p class="muted">Topics I have explored include coding and programming, binary concepts, PC troubleshooting, Adobe Photoshop, webpage design, Microsoft Word, and operating-system basics.</p>
-            <span class="tag">Training / learning experience</span>
-          </div>
-        </article>
-        <p class="notice">This section describes learning exposure, not professional certification or paid work experience.</p>
-      </div>
-    </section>
+<button class="menu" id="menuButton" aria-expanded="false" aria-controls="navLinks">
+Menu ☰
+</button>
 
-    <section id="skills">
-      <div class="wrap">
-        <div class="section-head"><div class="kicker">04 / Skills</div><h2>Skills I'm developing.</h2><p>I am building these abilities through school, training, and personal practice.</p></div>
-        <div class="skill-grid">
-          <article class="card skill-card"><div class="icon">🖥️</div><h3>Computer fundamentals</h3><p>Exploring operating systems, computer components, and basic troubleshooting concepts.</p><span class="skill-status">Learning & practicing</span></article>
-          <article class="card skill-card"><div class="icon">⌨️</div><h3>Office productivity</h3><p>Practicing document creation and learning how to organize information clearly.</p><span class="skill-status">Developing</span></article>
-          <article class="card skill-card"><div class="icon">🌐</div><h3>Web & coding basics</h3><p>Exploring webpage structure, coding concepts, and simple website projects.</p><span class="skill-status">Learning & practicing</span></article>
-          <article class="card skill-card"><div class="icon">🎨</div><h3>Digital creativity</h3><p>Exploring visual design and image-editing tools such as Adobe Photoshop.</p><span class="skill-status">Developing</span></article>
-          <article class="card skill-card"><div class="icon">🗣️</div><h3>Communication</h3><p>Building confidence in writing, speaking, presenting, and working with others.</p><span class="skill-status">Improving</span></article>
-          <article class="card skill-card"><div class="icon">🔎</div><h3>Research & problem-solving</h3><p>Practicing how to gather information, think critically, and approach tasks carefully.</p><span class="skill-status">Developing</span></article>
-        </div>
-      </div>
-    </section>
+<ul class="links" id="navLinks">
+<li><a href="#about">About</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#training">Training</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#goals">Goals</a></li>
+<li><a href="#resume">Resume</a></li>
+</ul>
 
-    <section id="projects">
-      <div class="wrap">
-        <div class="section-head"><div class="kicker">05 / Projects</div><h2>Practice made visible.</h2><p>A showcase for real school and personal projects. I will keep adding work as I complete and improve it.</p></div>
-        <div class="project-grid">
-          <article class="card project-card"><div class="icon">🌐</div><h3>Personal Portfolio Website</h3><p>My own website, created to introduce my background, learning journey, interests, and goals.</p><div class="project-foot">Personal project · This website</div></article>
-          <article class="card project-card"><div class="icon">📊</div><h3>Spreadsheet practice</h3><p>A space to add a real spreadsheet or data-organization activity after completing and checking the work.</p><div class="project-foot">Add your completed sample</div></article>
-          <article class="card project-card"><div class="icon">🎨</div><h3>Digital design samples</h3><p>A space to feature original posters, presentations, or image-editing practice with a short explanation.</p><div class="project-foot">Add your completed sample</div></article>
-        </div>
-        <p class="notice">Only publish work you actually created. For each new project, add a screenshot, tools used, your role, and what you learned. Do not present practice samples as paid client work.</p>
-      </div>
-    </section>
+<a class="nav-cta" href="#contact">Get in touch ↗</a>
 
-    <section id="goals">
-      <div class="wrap">
-        <div class="section-head"><div class="kicker">06 / Career direction</div><h2>Building my future step by step.</h2><p>My goals are a guide for what I want to learn and work toward.</p></div>
-        <div class="roadmap">
-          <article class="card step"><div class="step-num">STEP 01</div><h3>Complete my education</h3><p class="muted">Stay committed to school and strengthen my academic foundation.</p></article>
-          <article class="card step"><div class="step-num">STEP 02</div><h3>Build practical skills</h3><p class="muted">Improve computer, office, digital, and English communication skills through practice and suitable training.</p></article>
-          <article class="card step"><div class="step-num">STEP 03</div><h3>Grow my career</h3><p class="muted">Explore legitimate work and further learning opportunities when I meet the age and qualification requirements.</p></article>
-        </div>
-        <div class="card" style="margin-top:16px"><div class="kicker">Long-term vision</div><h3 style="font-size:1.35rem;margin:8px 0">Financial independence & entrepreneurship</h3><p class="muted">I hope to gain experience, manage money responsibly, and eventually build a business that provides value to others.</p></div>
-      </div>
-    </section>
+</nav>
+</header>
 
-    <section id="contact">
-      <div class="wrap">
-        <div class="contact-box">
-          <div><div class="kicker">07 / Contact</div><h2>Thank you for visiting.</h2><p>This portfolio shares my learning journey and future direction. For school-related or appropriate professional inquiries, you may contact me by email. Please be mindful that I am a student.</p><p style="margin-top:15px"><a class="email-link" href="mailto:charrelguillermo96@gmail.com">charrelguillermo96@gmail.com</a></p></div>
-          <a class="btn btn-primary" href="mailto:charrelguillermo96@gmail.com">Send an email ↗</a>
-        </div>
-        <p class="notice">Before keeping your email public, check with a parent or trusted adult. Do not publish your home address, personal phone number, birth date, school timetable, passwords, or identity documents.</p>
-      </div>
-    </section>
-  </main>
+<main id="main">
 
-  <footer><div class="wrap footer-inner"><span>© <span id="year">2026</span> Charrel Guillermo. Student portfolio.</span><span>Learning today · Building tomorrow</span></div></footer>
-  <script>
-    const menuButton = document.getElementById('menuButton');
-    const navLinks = document.getElementById('navLinks');
-    menuButton.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', String(isOpen));
-      menuButton.textContent = isOpen ? 'Close ✕' : 'Menu ☰';
-    });
-    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      menuButton.setAttribute('aria-expanded', 'false');
-      menuButton.textContent = 'Menu ☰';
-    }));
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<!-- HOME -->
+
+<section class="hero" id="home" style="border:0">
+<div class="wrap hero-grid">
+
+<div>
+<div class="eyebrow">Student Portfolio · Philippines</div>
+
+<h1>
+Learning today.<br>
+<span>Building tomorrow.</span>
+</h1>
+
+<p class="lead">
+Hello, I'm <strong>Charrel Guillermo</strong> — a Grade 11 HUMSS student interested in technology, digital creativity, office and computer-related skills, and entrepreneurship.
+</p>
+
+<div class="hero-actions">
+<a class="btn btn-primary" href="#projects">Explore my work ↓</a>
+<a class="btn btn-outline" href="#about">About me</a>
+</div>
+
+<div class="availability">
+<span class="dot"></span>
+Student · Learning and developing new skills
+</div>
+</div>
+
+<div class="portrait-wrap">
+<img class="portrait" src="cha.jpg" alt="Profile portrait of Charrel Guillermo">
+<div class="portrait-note">✦ Curious mind. Continuous growth.</div>
+</div>
+
+</div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+<div class="wrap">
+
+<div class="section-head">
+<div class="kicker">01 / About me</div>
+<h2>A little about my journey.</h2>
+<p>My background, interests, and the direction I hope to grow in.</p>
+</div>
+
+<div class="about-grid">
+
+<div class="card">
+<p>My name is <strong>Charrel Guillermo</strong>. I am a Senior High School student taking the HUMSS strand at Pacac Integrated School in Cagayan, Philippines.</p>
+
+<p>I enjoy discovering how technology works, learning digital tools, and finding creative ways to solve problems. I am still developing my abilities, and I believe that consistent practice and curiosity are important parts of growth.</p>
+
+<p>My long-term goal is to become financially independent, build a meaningful career, and eventually create a business of my own.</p>
+</div>
+
+<div class="facts">
+<div class="fact"><small>Current level</small><strong>Grade 11</strong></div>
+<div class="fact"><small>Academic strand</small><strong>HUMSS</strong></div>
+<div class="fact"><small>School</small><strong>Pacac Integrated School</strong></div>
+<div class="fact"><small>Interests</small><strong>Technology & digital work</strong></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- EDUCATION -->
+
+<section id="education">
+<div class="wrap">
+
+<div class="section-head">
+<div class="kicker">02 / Education</div>
+<h2>My academic foundation.</h2>
+<p>Learning experiences that help me build communication, research, and critical-thinking skills.</p>
+</div>
+
+<div class="timeline">
+
+<article class="card timeline-item">
+<div class="timeline-icon">🎓</div>
+<div>
+<h3>Pacac Integrated School</h3>
+<p class="muted">Senior High School · Grade 11 · HUMSS Strand</p>
+<p class="muted">Developing skills in communication, research, writing, collaboration, creativity, and critical thinking.</p>
+<span class="tag">Current education</span>
+</div>
+</article>
+
+<article class="card timeline-item">
+<div class="timeline-icon">📘</div>
+<div>
+<h3>Continuous learning</h3>
+<p class="muted">I also use independent practice and school activities to explore computer tools, improve my English communication, and build practical knowledge.</p>
+<span class="tag">Ongoing development</span>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<!-- TRAINING -->
+
+<section id="training">
+<div class="wrap">
+
+<div class="section-head">
+<div class="kicker">03 / Training & exposure</div>
+<h2>Exploring technology.</h2>
+<p>A learning experience that introduced me to computer-related topics and practical digital skills.</p>
+</div>
+
+<article class="card timeline-item">
+<div class="timeline-icon">💻</div>
+<div>
+<h3>Auxiliary Technology Program (ATP)</h3>
+<p class="muted">Program participant · Aparri, Cagayan · June 21 (year not specified)</p>
+<p class="muted">Topics I have explored include coding and programming, binary concepts, PC troubleshooting, Adobe Photoshop, webpage design, Microsoft Word, and operating-system basics.</p>
+<span class="tag">Training / learning experience</span>
+</div>
+</article>
+
+<p class="notice">
+This section describes learning exposure, not professional certification or paid work experience.
+</p>
+
+</div>
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+<div class="wrap">
+
+<div class="section-head">
+<div class="kicker">04 / Skills</div>
+<h2>Skills I'm developing.</h2>
+<p>I am building these abilities through school, training, and personal practice.</p>
+</div>
+
+<div class="skill-grid">
+
+<article class="card skill-card">
+<div class="icon">🖥️</div>
+<h3>Computer fundamentals</h3>
+<p>Exploring operating systems, computer components, and basic troubleshooting concepts.</p>
+<span class="skill-status">Learning & practicing</span>
+</article>
+
+<article class="card skill-card">
+<div class="icon">⌨️</div>
+<h3>Office productivity</h3>
+<p>Practicing document creation and learning how to organize information clearly.</p>
+<span class="skill-status">Developing</span>
+</article>
+
+<article class="card skill-card">
+<div class="icon">🌐</div>
+<h3>Web & coding basics</h3>
+<p>Exploring webpage structure, coding concepts, and simple website projects.</p>
+<span class="skill-status">Learning & practicing</span>
+</article>
+
+<article class="card skill-card">
+<div class="icon">🎨</div>
+<h3>Digital creativity</h3>
+<p>Exploring visual design and image-editing tools such as Adobe Photoshop.</p>
+<span class="skill-status">Developing</span>
+</article>
+
+<article class="card skill-card">
+<div class="icon">🗣️</div>
+<h3>Communication</h3>
+<p>Building confidence in writing, speaking, presenting, and working with others.</p>
+<span class="skill-status">Improving</span>
+</article>
+
+<article class="card skill-card">
+<div class="icon">🔎</div>
+<h3>Research & problem-solving</h3>
+<p>Practicing how to gather information, think critically, and approach tasks carefully.</p>
+<span class="skill-status">Developing</span>
+</article>
+
+</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+<div class="wrap">
+
+<div class="section-head">
+<div class="kicker">05 / Projects</div>
+<h2>Practice made visible.</h2>
+<p>A showcase for real school and personal projects. I will keep adding work as I complete and improve it.</p>
+</div>
+
+<div class="project-grid">
+
+<article class="card project-card">
+<div class="icon">🌐</div>
+<h3>Personal Portfolio Website</h3>
+<p>My own website, created to introduce my background, learning journey, interests, and goals.</p>
+<div class="project-foot">Personal project · This website</div>
+</article>
+
+<article class="card project-card">
+<div class="icon">📊</div>
+<h3>Spreadsheet practice</h3>
+<p>A space to add a real spreadsheet or data-organization activity after completing and checking the work.</p>
+<div class="project-foot">Add your completed sample</div>
+</article>
+
+<article class="card project-card">
+<div class="icon">🎨</div>
+<h3>Digital design samples</h3>
+<p>A space to feature original posters, presentations, or image-editing practice with a short explanation.</p>
+<div class="project-foot">Add your completed sample</div>
+</article>
+
+</div>
+
+<p class="notice">
+Only publish work you actually created. For each new project, add a screenshot, tools used, your role, and what you learned.
+</p>
+
+</div>
+</section>
+
+<!-- GOALS -->
+
+<section id="goals">
+<div class="wrap">
+
+<div class="section-head">
+<div class="kicker">06 / Career direction</div>
+<h2>Building my future step by step.</h2>
+<p>My goals are a guide for what I want to learn and work toward.</p>
+</div>
+
+<div class="roadmap">
+
+<article class="card">
+<div class="step-num">STEP 01</div>
+<h3>Complete my education</h3>
+<p class="muted">Stay committed to school and strengthen my academic foundation.</p>
+</article>
+
+<article class="card">
+<div class="step-num">STEP 02</div>
+<h3>Build practical skills</h3>
+<p class="muted">Improve computer, office, digital, and English communication skills through practice and suitable training.</p>
+</article>
+
+<article class="card">
+<div class="step-num">STEP 03</div>
+<h3>Grow my career</h3>
+<p class="muted">Explore legitimate work and further learning opportunities when I meet the age and qualification requirements.</p>
+</article>
+
+</div>
+
+<div class="card" style="margin-top:16px">
+<div class="kicker">Long-term vision</div>
+<h3 style="font-size:1.35rem;margin:8px 0">Financial independence & entrepreneurship</h3>
+<p class="muted">I hope to gain experience, manage money responsibly, and eventually build a business that provides value to others.</p>
+</div>
+
+</div>
+</section>
+
+<!-- RESUME - NEW SECTION -->
+
+<section id="resume">
+<div class="wrap">
+
+<div class="section-head">
+<div class="kicker">07 / Resume</div>
+<h2>My Resume.</h2>
+<p>A summary of my educational background, skills, training, and experiences.</p>
+</div>
+
+<div class="card resume-card">
+
+<div class="resume-info">
+<div class="resume-icon">📄</div>
+<div class="kicker">Professional document</div>
+<h3>Charrel Guillermo</h3>
+<p>Grade 11 HUMSS Student</p>
+<p>Pacac Integrated School · Cagayan, Philippines</p>
+
+<p style="margin-top:15px">
+Explore my resume to learn more about my background, qualifications, and developing skills.
+</p>
+</div>
+
+<div class="resume-actions">
+<a class="btn btn-primary" href="resume.pdf" target="_blank" rel="noopener">
+View Resume ↗
+</a>
+
+<a class="btn btn-outline" href="resume.pdf" download>
+Download PDF ↓
+</a>
+</div>
+
+</div>
+
+<p class="notice">
+Upload your actual resume PDF named <strong>resume.pdf</strong> to the same GitHub repository as this index.html file. The buttons will work after uploading it.
+</p>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+<div class="wrap">
+
+<div class="contact-box">
+
+<div>
+<div class="kicker">08 / Contact</div>
+<h2>Thank you for visiting.</h2>
+
+<p>This portfolio shares my learning journey and future direction. For school-related or appropriate professional inquiries, you may contact me by email. Please be mindful that I am a student.</p>
+
+<p style="margin-top:15px">
+<a class="email-link" href="mailto:charrelguillermo96@gmail.com">
+charrelguillermo96@gmail.com
+</a>
+</p>
+</div>
+
+<a class="btn btn-primary" href="mailto:charrelguillermo96@gmail.com">
+Send an email ↗
+</a>
+
+</div>
+
+<p class="notice">
+Before keeping your email public, check with a parent or trusted adult. Do not publish your home address, personal phone number, birth date, school timetable, passwords, or identity documents.
+</p>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="wrap footer-inner">
+<span>© <span id="year">2026</span> Charrel Guillermo. Student portfolio.</span>
+<span>Learning today · Building tomorrow</span>
+</div>
+</footer>
+
+<script>
+const menuButton = document.getElementById('menuButton');
+const navLinks = document.getElementById('navLinks');
+
+menuButton.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  menuButton.setAttribute('aria-expanded', String(isOpen));
+  menuButton.textContent = isOpen ? 'Close ✕' : 'Menu ☰';
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.textContent = 'Menu ☰';
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
